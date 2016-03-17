@@ -1,0 +1,17 @@
+# Misc
+\#*
+.\#*
+*.bak
+
+# Python
+*.pyc
+dist/
+build/
+*.egg-info/
+
+# Pylint
+pylint_*.*
+.cache/
+
+# PyCharm IDE
+.idea/
