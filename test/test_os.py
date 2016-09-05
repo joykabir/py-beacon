@@ -1,6 +1,6 @@
 import pytest
 
-test_data():
+def test_data():
     """
     Test function
     """
