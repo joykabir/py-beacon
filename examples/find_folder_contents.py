@@ -10,28 +10,30 @@ prints contents recursively
 ########################
 import os
 
-def print_dir_items(rel_path):
+def get_dir_contents(rel_path):
     """
     This function prints current directory contents
     """
+    rval = []
     abs_path = os.path.abspath(rel_path)
     if os.path.exists(abs_path):
         for child in os.listdir(abs_path):
             try:
                 child_abs_path = os.path.join(rel_path, child)
                 if os.path.isdir(child_abs_path):
-                    print_dir_items(child_abs_path)
+                    get_dir_contents(child_abs_path)
                 else:
-                    print child_abs_path
+                    rval.append(child_abs_path)
             except RuntimeError as rte:
                 print rte.message('Wrong path')
+    return tuple(rval)
 
 def find_current_dir():
     """
     Call path function and provide path as an argument
     """
     cpath = os.getcwd()
-    print_dir_items(cpath)
+    print get_dir_contents(cpath)
 
 def run():
     """
